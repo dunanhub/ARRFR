@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-size: 18px;
+    background-color: #232c32;
+    color: #ffffff;
+}
+
+
+
+/* 
+    LIGHT MODE
+
+    bg-color: #F6F7F9
+    bg-notifacation: #FF4C51
+    bg-card-color: #8C57FF
+    bg-warning: rgb(255,180,0)
+    text-color: #ffffff;
+    text-green: rgb(86,202,0)
+    text-red: rgb(255,76,81)
+    text-card-color: #rgb(46 38 61 / 70%)
+    nav-text-color: #2E263DE6
+    text-color-opocity: #2E263D66
+    hover-nav-bg-color: #E1E5EA
+    active-nav-bg-color: #C3CED7
+    active-text-color: #D400FF
+    bg-liner-gradient: #rgb(140,87,255) => #rgb(140 87 255 / 70%)
+*/
+/* 
+    DARK MODE
+
+    bg-color: #rgb(40,36,61)
+    bg-notifacation: #FF4C51
+    bg-card-color: #8C57FF
+    bg-warning: rgb(255,180,0)
+    text-color: #rgb(231 227 252 / 90%)
+    text-green: rgb(86,202,0)
+    text-red: rgb(255,76,81)
+    text-card-color: #rgb(46 38 61 / 70%)
+    nav-text-color: #2E263DE6
+    text-color-opocity: #2E263D66
+    hover-nav-bg-color: #E1E5EA
+    active-nav-bg-color: #C3CED7
+    active-text-color: #D400FF
+    bg-liner-gradient: #rgb(140,87,255) => #rgb(140 87 255 / 70%)
+*/
