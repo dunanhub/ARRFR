@@ -4,7 +4,7 @@
 
 <template>
     <section class="grid" style="grid-template-columns: 1fr 6fr;">
-        <div class="p-6">
+        <div class="p-2">
             <LayoutSidebar />
         </div>
         <div>
