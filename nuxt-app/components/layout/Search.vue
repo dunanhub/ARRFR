@@ -27,49 +27,95 @@
         <Icon name="line-md:search" size="1.5em" class="header-icon" />
         <input type="text" placeholder="Search..." class="search-input" />
         <span @click="closeMenu" class="esc-text">[esc]</span>
-        <span @click="closeMenu" class="close-btn">✖️</span>
+        <span @click="closeMenu" class="close-btn">
+          <Icon name="line-md:menu-to-close-alt-transition" class="hover:bg-[#8c57ff]" />
+        </span>
       </div>
       <div class="divider"></div>
       <div class="menu-content">
-        <div class="column">
-          <div class="menu-section">
-            <h4>Popular Searches</h4>
-            <ul>
-              <li>Analytics</li>
-              <li>CRM</li>
-              <li>eCommerce</li>
-              <li>Logistics</li>
-            </ul>
-          </div>
-          <div class="menu-section">
-            <h4>Apps & Pages</h4>
-            <ul>
-              <li>Calendar</li>
-              <li>Roles & Permissions</li>
-              <li>Account Settings</li>
-              <li>Dialog Examples</li>
-            </ul>
-          </div>
+        <div class="menu-section">
+          <h4>Популярные запросы</h4>
+          <ul>
+            <li>
+              <Icon name="uim:analytics" size="1.2em" class="mr-2" />
+              Analytics
+            </li>
+            <li>
+              <Icon name="grommet-icons:analytics" size="1.2em" class="mr-2" />
+              CRM
+            </li>
+            <li>
+              <Icon name="line-md:email" size="1.2em" class="mr-2" />
+              Почта
+            </li>
+            <li>
+              <Icon name="cil:chart-line" size="1.2em" class="mr-2" />
+              Статистика
+            </li>
+          </ul>
         </div>
-        <div class="column">
-          <div class="menu-section">
-            <h4>User Interface</h4>
-            <ul>
-              <li>Typography</li>
-              <li>Accordion</li>
-              <li>Alerts</li>
-              <li>Cards</li>
-            </ul>
-          </div>
-          <div class="menu-section">
-            <h4>Radio & Tables</h4>
-            <ul>
-              <li>Radio</li>
-              <li>Form Layouts</li>
-              <li>Table</li>
-              <li>Editor</li>
-            </ul>
-          </div>
+        <div class="menu-section">
+          <h4>Приложения и страницы</h4>
+          <ul>
+            <li>
+              <Icon name="uim:analytics" size="1.2em" class="mr-2" />
+              Analytics
+            </li>
+            <li>
+              <Icon name="grommet-icons:analytics" size="1.2em" class="mr-2" />
+              CRM
+            </li>
+            <li>
+              <Icon name="line-md:email" size="1.2em" class="mr-2" />
+              Почта
+            </li>
+            <li>
+              <Icon name="cil:chart-line" size="1.2em" class="mr-2" />
+              Статистика
+            </li>
+          </ul>
+        </div>
+        <div class="menu-section">
+          <h4>User Interface</h4>
+          <ul>
+            <li>
+              <Icon name="uim:analytics" size="1.2em" class="mr-2" />
+              Analytics
+            </li>
+            <li>
+              <Icon name="grommet-icons:analytics" size="1.2em" class="mr-2" />
+              CRM
+            </li>
+            <li>
+              <Icon name="line-md:email" size="1.2em" class="mr-2" />
+              Почта
+            </li>
+            <li>
+              <Icon name="cil:chart-line" size="1.2em" class="mr-2" />
+              Статистика
+            </li>
+          </ul>
+        </div>
+        <div class="menu-section">
+          <h4>Radio & Tables</h4>
+          <ul>
+            <li>
+              <Icon name="uim:analytics" size="1.2em" class="mr-2" />
+              Analytics
+            </li>
+            <li>
+              <Icon name="grommet-icons:analytics" size="1.2em" class="mr-2" />
+              CRM
+            </li>
+            <li>
+              <Icon name="line-md:email" size="1.2em" class="mr-2" />
+              Почта
+            </li>
+            <li>
+              <Icon name="cil:chart-line" size="1.2em" class="mr-2" />
+              Статистика
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -128,7 +174,7 @@ export default {
   right: 0;
   bottom: 0;
   backdrop-filter: blur(4px);
-  background-color: rgba(255, 255, 255, 0.01);
+  background-color: #ffffff09;
   z-index: 10;
 }
 
@@ -139,7 +185,7 @@ export default {
   transform: translate(-50%, -50%);
   width: 50%;
   max-width: 600px;
-  background-color: rgb(46, 42, 69);
+  background-color: rgb(49, 45, 75);
   padding: 20px;
   border-radius: 8px;
   z-index: 20;
@@ -167,8 +213,12 @@ export default {
 
 .esc-text {
   color: #a0a0a0;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   cursor: pointer;
+  margin-top: -5px;
+}
+.esc-text:hover {
+  color: #8c57ff;
 }
 
 .close-btn {
@@ -186,24 +236,34 @@ export default {
 
 .menu-content {
   display: flex;
-  gap: 20px;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
   margin-top: 20px;
-  justify-content: center;
-  text-align: left;
+  /* padding: 20px; */
+}
+.menu-section {
+  width: 50%;
+  padding: 30px;
+  /* flex-basis: 100%; */
+  /* height: auto; */
 }
 
-.column {
+/* .column {
   display: flex;
   flex-direction: column;
   gap: 20px;
   width: 40%;
-}
+} */
 
 .menu-section h4 {
-  color: #a0a0a0;
-  font-size: 0.8rem;
+  color: rgb(231 227 252 / 40%);
+  font-size: .8rem;
   margin-bottom: 10px;
   text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1rem;
 }
 
 .menu-section ul {
@@ -212,12 +272,14 @@ export default {
 }
 
 .menu-section li {
-  color: #fff;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
   margin-bottom: 5px;
   cursor: pointer;
 }
 
 .menu-section li:hover {
-  text-decoration: underline;
+  color: #8c57ff;
 }
 </style>
