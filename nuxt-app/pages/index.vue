@@ -1,6 +1,6 @@
 <template>
     <div>
-        <LayoutHeader />
-        Home Page
+        <LayoutHeader/>
+        <span>Home Page</span>
     </div>
 </template>
