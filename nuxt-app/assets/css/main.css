@@ -4,8 +4,9 @@
 
 body {
     font-size: 18px;
-    background-color: #F6F7F9;
-    color: #2E263DE6;
+    background-color: rgb(40,36,61);
+    /* background-color: #4c4470; */
+    color: rgb(231 227 252 / 90%);
 }
 
 
