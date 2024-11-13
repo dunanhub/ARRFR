@@ -16,28 +16,27 @@
         >
           <div class="flex flex-col space-y-2 pb-2">
             <button
-              @click="openProfile"
-              class="flex justify-center items-center rounded-lg space-x-2 mx-2 py-2 px-4 text-[var(--nav-text-color)] hover:text-[var(--hover-nav-color)]"
+              class="flex justify-center items-center w-auto space-x-2 mx-2 py-2 px-4 text-[var(--nav-text-color)] hover:text-[var(--hover-nav-color)]"
             >
-              <NuxtImg src="/avatar.png" width="100px" />
+              <NuxtImg src="/avatar.png" width="100px" class="rounded-full border-[3px]" alt="avatar" />
             </button>
             <button
               @click="openProfile"
-              class="flex justify-left items-center space-x-2 mx-2 pt-4 px-4 text-[var(--nav-text-color)] border-t-2 border-[var(--bg-color)] hover:text-[var(--hover-nav-color)]"
+              class="flex justify-left items-center space-x-2 mx-2 pt-4 px-4 text-[var(--nav-text-color)] border-t-2 border-[var(--bg-color)] hover:text-[var(--hover-nav-color)] transition"
             >
               <Icon name="line-md:person" size="1.2em" />
               <span>Профиль</span>
             </button>
             <button
               @click="openSettings"
-              class="flex justify-left items-center space-x-2 mx-2 pb-4 px-4 text-[var(--nav-text-color)] border-b-2 border-[var(--bg-color)] hover:text-[var(--hover-nav-color)]"
+              class="flex justify-left items-center space-x-2 mx-2 pb-4 px-4 text-[var(--nav-text-color)] border-b-2 border-[var(--bg-color)] hover:text-[var(--hover-nav-color)] transition"
             >
               <Icon name="line-md:cog-loop" size="1.2em" />
               <span>Настройки</span>
             </button>
             <button
               @click="logout"
-              class="flex justify-center items-center space-x-2 m-4 py-2 px-4 rounded-lg bg-red-500 text-[var(--nav-text-color)] hover:bg-[var(--hover-nav-color)] hover:text-[var(--nav-text-color)]"
+              class="flex justify-center items-center space-x-2 m-4 py-2 px-4 rounded-lg bg-red-500 text-[var(--nav-text-color)] hover:bg-red-600 transition"
             >
                 <span>Выход</span>
                 <Icon name="line-md:log-in" size="1.2em" />
