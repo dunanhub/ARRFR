@@ -1,5 +1,5 @@
 <template>
     <div>
-        Index
+        Statistics
     </div>
 </template>

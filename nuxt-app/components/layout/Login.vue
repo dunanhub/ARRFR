@@ -36,7 +36,7 @@
             </button>
             <button
               @click="logout"
-              class="flex justify-center items-center space-x-2 m-4 py-2 px-4 rounded-lg bg-red-500 text-[var(--nav-text-color)] hover:bg-red-600 transition"
+              class="flex justify-center items-center space-x-2 m-4 py-2 px-4 rounded-lg bg-red-500 text-[var(--nav-text-color)] hover:bg-red-700 transition"
             >
                 <span>Выход</span>
                 <Icon name="line-md:log-in" size="1.2em" />
