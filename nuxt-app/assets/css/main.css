@@ -15,5 +15,7 @@ body {
     --bg-cancel-color: rgb(98, 98, 98);
     --text-color: rgb(0, 0, 0);
     --nav-text-color: rgb(255, 255, 255);
-    
+    --bg-card-color: #213e60;
+    --bg-card-opacity-color: rgb(56, 93, 135);
+    --text-card-opacity-color: rgba(255, 255, 255, 0.736);
 }

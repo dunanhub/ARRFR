@@ -13,6 +13,9 @@
     "@iconify/vue": "^4.1.2",
     "@nuxt/icon": "^1.6.1",
     "@nuxt/image": "^1.8.1",
+    "@nuxtjs/auth-next": "5.0.0-1667386184.dfbbb54",
+    "@nuxtjs/axios": "^5.13.6",
+    "chart.js": "^4.4.6",
     "nuxt": "^3.14.159",
     "vue": "latest",
     "vue-router": "latest"
