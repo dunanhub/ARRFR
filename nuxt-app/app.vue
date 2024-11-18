@@ -1,4 +1,7 @@
 <template>
+  <!-- <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout> -->
   <div>
     <SignIn />
   </div>

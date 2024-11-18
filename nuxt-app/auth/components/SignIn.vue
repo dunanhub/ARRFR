@@ -1,81 +1,165 @@
 <template>
-<div class="login-container">
-    <h1 class="text-center">Login</h1>
-    <form @submit.prevent="handleSubmit" class="login-form">
-      <div class="form-group">
-        <label for="email">Почта</label>
-        <input
-          v-model="form.email"
-          type="email"
-          id="email"
-          placeholder="Enter your email"
-          required
-          class="input"
-        />
-      </div>
-      <div class="form-group">
-        <label for="password">Пароль</label>
-        <input
-          v-model="form.password"
-          type="password"
-          id="password"
-          placeholder="Enter your password"
-          required
-          class="input"
-        />
-      </div>
-      <button type="submit" class="btn btn-primary">Войти</button>
-    </form>
-  </div>
+    <div class="login-page">
+      <span class="circle top-left"></span>
+      <span class="circle bottom-right"></span>
+      <form class="login-block" @submit.prevent="handleSubmit">
+        <NuxtImg src="/logo/AFR_rus.png" width="200px" class="logo" />
+        <div class="form-group">
+          <label for="email" class="label">Почта:</label>
+          <input
+            type="email"
+            id="email"
+            v-model="form.email"
+            class="input"
+            placeholder="name@example.com"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="password" class="label">Пароль:</label>
+          <input
+            type="password"
+            id="password"
+            v-model="form.password"
+            class="input"
+            required
+          />
+        </div>
+        <button type="submit" class="button">Войти в систему</button>
+      </form>
+    </div>
 </template>
 
-<script setup>
-    import { reactive } from 'vue';
-
-    const form = reactive({
+<script>
+  import { reactive } from 'vue';
+  
+  export default {
+    name: 'SignIn',
+    setup() {
+      const form = reactive({
         email: '',
         password: '',
-    });
-
-    const handleSubmit = () => {
-        console.log('Form Data:', form);
-    };
-
+      });
+  
+      const handleSubmit = () => {
+        console.log('Form submitted:', form);
+      };
+  
+      return {
+        form,
+        handleSubmit,
+      };
+    },
+  };
 </script>
 
 <style scoped>
-.login-container {
-  max-width: 400px;
-  margin: 50px auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.login-form .form-group {
-  margin-bottom: 15px;
-}
-
-.input {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.btn {
-  width: 100%;
-  padding: 10px;
-  color: #fff;
-  background-color: #007bff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background-color: #0056b3;
-}
+  /* Wrapper for the entire login page */
+  .login-page {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9;
+    overflow: hidden;
+  }
+  
+  /* Circle decorations */
+  .circle {
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    border: 10px solid var(--bg-nav-color);
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  
+  .top-left {
+    top: -300px;
+    left: -300px;
+  }
+  
+  .bottom-right {
+    bottom: -300px;
+    right: -300px;
+  }
+  
+  /* Logo */
+  .logo {
+    display: block;
+    margin: 0 auto 1.5rem;
+  }
+  
+  /* Form block */
+  .login-block {
+    z-index: 2;
+    max-width: 400px;
+    width: 100%;
+    padding: 2rem;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  /* Form group */
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Label */
+  .label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    text-align: left;
+  }
+  
+  /* Input */
+  .input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+    background: #f9f9f9;
+  }
+  
+  .input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+  }
+  
+  /* Button */
+  .button {
+    display: inline-block;
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background: var(--bg-nav-color);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s;
+  }
+  
+  .button:hover {
+    background: var(--btn-hover);
+  }
+  
+  .button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+  }
 </style>
+  
