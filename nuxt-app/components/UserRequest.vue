@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col justify-center items-center w-[400px] bg-[var(--bg-card-color)] text-white rounded-lg">
+    <div class="flex flex-col justify-center items-center bg-[var(--bg-card-color)] text-white rounded-lg">
         <div class="flex flex-col justify-center items-start w-full p-4 text-left text-[20px] tracking-[2px] font-bold relative">
             <span>Запросы из Чата</span>
             <span class="absolute bottom-2 right-2 block text-[8px] font-medim text-[var(--text-card-opacity-color)] opacity-100 p-2 bg-[var(--bg-card-opacity-color)] rounded-xl">Прошлая Неделя</span>
