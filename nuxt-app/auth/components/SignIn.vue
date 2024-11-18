@@ -89,7 +89,7 @@
   /* Logo */
   .logo {
     display: block;
-    margin: 0 auto 1.5rem;
+    /* margin: 0 auto 1.5rem; */
   }
   
   /* Form block */
