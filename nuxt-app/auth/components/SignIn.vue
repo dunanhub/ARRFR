@@ -40,7 +40,6 @@ const form = reactive({
 
 const handleSubmit = async () => {
   try {
-    // Отправка POST-запроса через fetch
     const response = await fetch("http://127.0.0.1:8000/api/login/", {
       method: "POST", // Убедитесь, что здесь именно POST
       headers: {
