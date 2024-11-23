@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@iconify/vue": "^4.1.2",
+    "@nuxt/http": "^0.6.4",
     "@nuxt/icon": "^1.6.1",
     "@nuxt/image": "^1.8.1",
     "@nuxtjs/auth-next": "5.0.0-1667386184.dfbbb54",

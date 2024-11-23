@@ -30,27 +30,41 @@
     </div>
 </template>
 
-<script>
-  import { reactive } from 'vue';
-  
-  export default {
-    name: 'SignIn',
-    setup() {
-      const form = reactive({
-        email: '',
-        password: '',
-      });
-  
-      const handleSubmit = () => {
-        console.log('Form submitted:', form);
-      };
-  
-      return {
-        form,
-        handleSubmit,
-      };
-    },
-  };
+<script setup>
+import { reactive } from "vue";
+
+const form = reactive({
+  email: "",
+  password: "",
+});
+
+const handleSubmit = async () => {
+  try {
+    // Отправка POST-запроса через fetch
+    const response = await fetch("http://127.0.0.1:8000/api/login/", {
+      method: "POST", // Убедитесь, что здесь именно POST
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: form.email,
+        password: form.password,
+      }),
+    });
+
+    // Обработка ответа
+    if (response.ok) {
+      const data = await response.json();
+      alert("Успешный вход! Токен: " + data.access);
+    } else {
+      const errorData = await response.json();
+      alert(`Ошибка: ${errorData.error || "Неизвестная ошибка"}`);
+    }
+  } catch (error) {
+    console.error("Ошибка соединения:", error);
+    alert("Ошибка соединения с сервером!");
+  }
+};
 </script>
 
 <style scoped>
