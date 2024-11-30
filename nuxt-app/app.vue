@@ -1,18 +1,11 @@
 <template>
-  <!-- <NuxtLayout>
+  <NuxtLayout>
     <NuxtPage />
-  </NuxtLayout> -->
-  <div>
-    <SignIn />
-  </div>
+  </NuxtLayout>
 </template>
 
-<script>
-import SignIn from '~/auth/components/SignIn.vue'; // Импортируем компонент
-
-export default {
-  components: {
-    SignIn, // Регистрируем компонент в `components`
-  },
-};
+<script setup>
+    definePageMeta({
+      middleware: 'auth',  // Подключаем middleware для этой страницы
+    });
 </script>

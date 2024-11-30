@@ -12,4 +12,9 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "@nuxt/icon",
   ],
+  runtimeConfig: {
+    public: {
+      apiBase: 'http://127.0.0.1:8000/api', // Настройка API
+    },
+  },
 })

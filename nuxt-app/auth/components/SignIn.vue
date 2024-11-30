@@ -5,13 +5,12 @@
       <form class="login-block" @submit.prevent="handleSubmit">
         <NuxtImg src="/logo/AFR_rus.png" width="200px" class="logo" />
         <div class="form-group">
-          <label for="email" class="label">Почта:</label>
+          <label for="email" class="label">Username:</label>
           <input
-            type="email"
-            id="email"
-            v-model="form.email"
+            type="text"
+            id="username"
+            v-model="form.username"
             class="input"
-            placeholder="name@example.com"
             required
           />
         </div>
@@ -32,9 +31,12 @@
 
 <script setup>
 import { reactive } from "vue";
+import { useRouter } from "#app";
+
+const router = useRouter();
 
 const form = reactive({
-  email: "",
+  username: "",
   password: "",
 });
 
@@ -46,7 +48,7 @@ const handleSubmit = async () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        email: form.email,
+        username: form.username,
         password: form.password,
       }),
     });
@@ -54,7 +56,8 @@ const handleSubmit = async () => {
     // Обработка ответа
     if (response.ok) {
       const data = await response.json();
-      alert("Успешный вход! Токен: " + data.access);
+      localStorage.setItem('access_token', data.access); // Сохраняем токен
+      router.push('/main'); // Перенаправляем на нужную страницу
     } else {
       const errorData = await response.json();
       alert(`Ошибка: ${errorData.error || "Неизвестная ошибка"}`);
