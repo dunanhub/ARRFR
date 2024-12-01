@@ -5,7 +5,11 @@
         class="flex justify-center items-center cursor-pointer profile-button text-[var(--nav-text-color)] hover:text-[var(--hover-nav-color)]"
       >
         <Icon name="line-md:account" class="mr-2 text-[24px]" />
-        <span class="text-lg underline tracking-wider">Ubniyev Bekzat</span>
+        <span v-if="loading" class="text-lg underline tracking-wider">Загрузка...</span>
+        <span v-else-if="error" class="text-lg underline tracking-wider text-red-500">{{ error }}</span>
+        <span v-else class="text-lg underline tracking-wider">
+          {{ username }} (Уровень: {{ level || 'нет данных' }})
+        </span>
       </div>
   
       <transition name="fade">
@@ -47,49 +51,102 @@
     </div>
 </template>
   
-<script>
-  export default {
-    data() {
-      return {
-        menuVisible: false,
-      };
-    },
-    methods: {
-      toggleMenu() {
-        this.menuVisible = !this.menuVisible;
-        if (this.menuVisible) {
-          document.addEventListener("click", this.handleClickOutside);
-        } else {
-          document.removeEventListener("click", this.handleClickOutside);
-        }
+<script setup>
+import { ref, onBeforeUnmount, onMounted } from 'vue';
+import { useRouter } from '#app';
+
+const menuVisible = ref(false);
+
+const username = ref(''); // Имя пользователя
+const loading = ref(true); // Состояние загрузки
+const error = ref(null); // Ошибки
+
+const level = ref(null); // Новый state для уровня пользователя
+
+const router = useRouter();
+
+const fetchUserProfile = async () => {
+  const token = localStorage.getItem('access_token');
+  if (!token) {
+    error.value = 'Токен отсутствует';
+    router.push('/');
+    return;
+  }
+
+  try {
+    // console.log('Токен:', token);
+
+    const response = await fetch('http://127.0.0.1:8000/api/api/user/', {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
       },
-      handleClickOutside(event) {
-        if (
-          !this.$refs.menu.contains(event.target) &&
-          !event.target.closest(".profile-button")
-        ) {
-          this.menuVisible = false;
-          document.removeEventListener("click", this.handleClickOutside);
-        }
-      },
-      openProfile() {
-        this.menuVisible = false;
-        alert("Opening profile");
-      },
-      openSettings() {
-        this.menuVisible = false;
-        alert("Opening settings");
-      },
-      logout() {
-        this.menuVisible = false;
-        alert("Logging out");
-      },
-    },
-    beforeDestroy() {
-      document.removeEventListener("click", this.handleClickOutside);
-    },
-  };
+    });
+
+    // Проверяем только один раз
+    if (response.ok) {
+      const data = await response.json(); // Читаем тело только один раз
+      console.log('Ответ сервера:', data);
+      username.value = data.username;
+      level.value = data.level; // Устанавливаем уровень пользователя
+    } else {
+      const errorData = await response.json();
+      error.value = errorData.detail || 'Ошибка загрузки профиля';
+      router.push('/');
+    }
+  } catch (err) {
+    error.value = 'Ошибка соединения с сервером';
+    console.error('Ошибка соединения:', err);
+  } finally {
+    loading.value = false; // Завершаем загрузку
+  }
+};
+
+const toggleMenu = () => {
+  menuVisible.value = !menuVisible.value;
+  if (menuVisible.value) {
+    document.addEventListener("click", handleClickOutside);
+  } else {
+    document.removeEventListener("click", handleClickOutside);
+  }
+};
+
+const handleClickOutside = (event) => {
+  if (
+    !event.target.closest(".profile-button") &&
+    !event.target.closest(".menu")
+  ) {
+    menuVisible.value = false;
+    document.removeEventListener("click", handleClickOutside);
+  }
+};
+
+const openProfile = () => {
+  menuVisible.value = false;
+  alert("Opening profile");
+};
+
+const openSettings = () => {
+  menuVisible.value = false;
+  alert("Opening settings");
+};
+
+const logout = () => {
+  // Удаляем токены из localStorage
+  localStorage.removeItem('access_token');
+  localStorage.removeItem('refresh_token');
+  
+  // Перенаправляем пользователя на страницу логина
+  router.push('/');
+};
+
+onBeforeUnmount(() => {
+  document.removeEventListener("click", handleClickOutside);
+});
+
+onMounted(fetchUserProfile);
 </script>
+
   
 <style scoped>
   .fade-enter-active,

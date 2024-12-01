@@ -57,6 +57,7 @@ const handleSubmit = async () => {
     if (response.ok) {
       const data = await response.json();
       localStorage.setItem('access_token', data.access); // Сохраняем токен
+      localStorage.setItem('refresh_token', data.refresh); // Сохраняем refresh токен
       router.push('/main'); // Перенаправляем на нужную страницу
     } else {
       const errorData = await response.json();
